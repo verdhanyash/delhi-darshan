@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Delhi: Tourist Spots</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff7200;
+            --bg-dark: #121212;
+            --text-light: #f4f4f4;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) rgba(255, 114, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu ul li {
+            margin: 0 15px;
+        }
+
+        .menu ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .menu ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .srch {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--text-light);
+            padding: 10px;
+            width: 250px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            padding: 10px 15px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff8a2b;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* Map Section */
+        .map-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .map-container {
+            flex: 3;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        .spots-overview {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .spots-overview h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .spots-overview ul {
+            list-style: none;
+        }
+
+        .spots-overview li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: rgba(255, 114, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .spots-overview li:hover {
+            transform: translateX(10px);
+        }
+
+        /* Horizontal Scroller */
+        .horizontal-scroller {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px 0;
+            scrollbar-width: thin;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .horizontal-scroller::-webkit-scrollbar-track {
+            background: rgba(255, 114, 0, 0.1);
+        }
+
+        .horizontal-scroller::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .spot-card {
+            flex: 0 0 300px;
+            scroll-snap-align: start;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .spot-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .spot-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .spot-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .spot-card-content {
+            padding: 15px;
+        }
+
+        .spot-card-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .menu ul li {
+                margin: 5px 10px;
+            }
+
+            .map-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .map-container, 
+            .spots-overview {
+                flex: auto;
+                width: 100%;
+            }
+
+            .horizontal-scroller {
+                scrollbar-width: thin;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .spot-card {
+                flex: 0 0 250px;
+            }
+
+            .srch {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="icon">
+            <h2 class="logo">Dilli darshan!</h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+              
+                <li><a href="navigate.html">NAVIGATE</a></li>
+                <li><a href="map.html">MAP</a></li>
+                <li><a href="conn.html">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div class="search">
+            <input class="srch" type="search" name="" placeholder="Type To search">
+            <button class="btn">Search</button>
+        </div>
+    </div> 
+
+    <div class="container">
+        <div class="header">
+            <h1>Discover Delhi's Wonders</h1>
+        </div>
+
+        <div class="map-section">
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224356.6709055053!2d77.03611246183676!3d28.646677225906065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d047609062577%3A0x5ed89f22aa63b8e0!2sDelhi!5e0!3m2!1sen!2sin!4v1703116678197!5m2!1sen!2sin" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <div class="spots-overview">
+                <h2>Delhi at a Glance</h2>
+                <ul>
+                    <li>Capital of India</li>
+                    <li>Rich Historical Heritage</li>
+                    <li>Cultural Melting Pot</li>
+                    <li>Home to Multiple UNESCO Sites</li>
+                    <li>Ancient and Modern Blend</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="horizontal-scroller">
+            <div class="spot-card">
+                <img src="rf.jpg" alt="Red Fort">
+                <div class="spot-card-content">
+                    <h3>Red Fort</h3>
+                    <p>Iconic Mughal fortress and UNESCO World Heritage Site</p>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <img src="lotus temple.jpg" alt="Iskcon temple">
+                <div class="spot-card-content">
+                    <h3>Iskcon Temple</h3>
+                    <p>ISKCON Temple, renowned for its stunning architecture and spiritual ambiance</p>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <img src="Akshardham.jpg" alt="Akshardham Temple">
+                <div class="spot-card-content">
+                    <h3>Akshardham Temple</h3>
+                    <p>Akshardham Temple, celebrated for its magnificent architecture and cultural heritage</p>
+                </div>
+            </div>
+                        
+            <div class="spot-card">
+                <img src="qm.jpg" alt="Qutub Minar">
+                <div class="spot-card-content">
+                    <h3>Qutub Minar</h3>
+                    <p>Tallest brick minaret in the world, a marvel of Indo-Islamic architecture</p>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <img src="Humayun's Tomb.jpg" alt="Humayun's Tomb">
+                <div class="spot-card-content">
+                    <h3>Humayun's Tomb</h3>
+                    <p>Magnificent Mughal garden-tomb, inspiration for Taj Mahal</p>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <img src="india gate.jpg" alt="India Gate">
+                <div class="spot-card-content">
+                    <h3>India Gate</h3>
+                    <p>National monument dedicated to soldiers of British Indian Army</p>
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <img src="lotus temple.jpg" alt="Lotus Temple">
+                <div class="spot-card-content">
+                    <h3>Lotus Temple</h3>
+                    <p>Bahai House of Worship, known for its unique lotus-like shape</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

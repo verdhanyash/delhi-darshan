@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Adventure Signup</title>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(tomp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; /* Changed from auto to cover */
+    background-position: center; /* Added to center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+        .form {
+            width: 250px;
+            height: 500px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+            position: absolute;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(255,114,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .form h2 {
+            width: 220px;
+            font-family: sans-serif;
+            text-align: center;
+            color: #ff7200;
+            font-size: 22px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 2px;
+            padding: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form input {
+            width: 240px;
+            height: 35px;
+            background: transparent;
+            border-bottom: 1px solid #ff7200;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            font-family: sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form input:focus {
+            outline: none;
+            border-bottom-color: #ffffff;
+        }
+
+        ::placeholder {
+            color: #fff;
+            font-family: Arial;
+            opacity: 0.7;
+        }
+
+        .btnn {
+            width: 240px;
+            height: 40px;
+            background: #ff7200;
+            border: none;
+            margin-top: 30px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #fff;
+            transition: 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btnn:hover {
+            background: #fff;
+            color: #ff7200;
+        }
+
+        .form .link {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            padding-top: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .form .link a {
+            text-decoration: none;
+            color: #ff7200;
+            transition: color 0.3s ease;
+        }
+
+        .form .link a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .form {
+                position: relative;
+                left: 0;
+                transform: none;
+                margin: 50px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <h2>Create Account</h2>
+        <form>
+            <input type="text" name="fullname" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Create Password" required>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+            <a href="login.html"><button class="btnn">Sign Up</button></a>
+            <div class="link">
+                <p>Already a traveler? <a href="login.html">Login</a></p>
+                <p>Have an account?  <a href="index.html">GO AHEADD</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

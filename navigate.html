@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - FindTour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            /* Set background to black */
+            color: white;
+            /* Default text color to white for contrast */
+        }
+
+        .main {
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color:black;
+           
+            padding: 10px 20px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+        }
+
+        .navbar .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: aliceblue;
+            display: flex;
+        }
+
+        .navbar .menu ul li {
+            margin: 0 15px;
+        }
+
+        .navbar .menu ul li a {
+            color:aliceblue;
+            /* Change link color to black for contrast */
+            text-decoration: none;
+            transition: color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        .navbar .menu ul li a:hover {
+            color: #ff7200;
+            /* Change link color to white on hover */
+        }
+
+        .navbar .search {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search input.srch {
+            padding: 5px;
+            margin-right: 5px;
+            border: 1px solid #ff7200;
+            /* Border color matching the theme */
+            border-radius: 5px;
+            /* Rounded corners */
+        }
+
+        .navbar .search button {
+            background-color: #ff7200;
+            /* Button background color */
+            color: black;
+            /* Button text color */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s;
+            /* Smooth transition for hover effect */
+        }
+
+        .navbar .search button:hover {
+            background-color: #e66a00;
+            /* Darker orange on hover */
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .metro-services,
+        .bus-services,
+        .hospitals,
+        .more-info {
+            background: #222;
+            /* Dark background for sections */
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(255, 114, 0, 0.5);
+            /* Soft shadow with theme color */
+        }
+
+        h1,
+        h2 {
+            color: #ff7200;
+            /* Heading color matching the theme */
+        }
+
+        #metro-map {
+            width: 100%;
+            /* Make the image responsive */
+            height: auto;
+            /* Maintain aspect ratio */
+            max-width: 1000px;
+            /* Set a max width */
+            margin: 20px 0;
+            /* Add margin for spacing */
+        }
+
+        .emergency-contact {
+            background: #ff7200;
+            /* Emergency contact background */
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 5px;
+            /* Rounded corners */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">Dilli darshan!</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    
+                    <li><a href="navigate.html">NAVIGATE</a></li>
+                    <li><a href="map.html">MAP</a></li>
+                    <li><a href="conn.html">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+        </div>
+
+        <div class="content">
+            <h1>Delhi Metro & Bus Services</h1>
+            <p class="par">Explore the Delhi Metro routes and bus services for easy navigation around Delhi. Whether you
+                are traveling to historical landmarks, cultural spots, or business districts, these services will make
+                your journey smoother.</p>
+
+            <div class="metro-services">
+                <h2>Delhi Metro Routes</h2>
+                <h1>Delhi Metro Map</h1>
+                <img id="metro-map" src="metro route.jpg" alt="Delhi Metro Map">
+                <div class="zoom-controls">
+                    <button onclick="zoomIn()">Zoom In</button>
+                    <button onclick="zoomOut()">Zoom Out</button>
+                </div>
+                <p>Use the map above to check the routes of the Delhi Metro. It covers key areas including Old Delhi,
+                    New Delhi, Gurgaon, and Noida. Below are the major metro lines:</p>
+                <ul>
+                    <li><strong>Red Line</strong>: Dilshad Garden to Rithala</li>
+                    <li><strong>Yellow Line</strong>: Samaypur Badli to HUDA City Centre</li>
+                    <li><strong>Blue Line</strong>: Dwarka Sector 21 to Noida City Centre</li>
+                    <li><strong>Green Line</strong>: Inderlok to Brigadier Hoshiar Singh</li>
+                    <li><strong>Violet Line</strong>: Kashmere Gate to Badarpur</li>
+                </ul>
+            </div>
+
+
+            <!-- Bus Helpline Numbers Section -->
+            <div class="bus-services">
+                <h2>Delhi Metro Bus Helplines</h2>
+                <p>For any issues or inquiries about bus routes and services, you can contact the following helplines:
+                </p>
+                <ul>
+                    <li><strong>Delhi Metro Rail Corporation (DMRC) Helpline</strong>: 1800-11-1363</li>
+                    <li><strong>Delhi Transport Corporation (DTC) Helpline</strong>: 011-23315240</li>
+                    <li><strong>Delh Metro Buses Helpline</strong>: 011- 23319999</li>
+                </ul>
+            </div>
+
+            <!-- Local Hospitals Section -->
+            <div class="hospitals">
+                <h2>Nearby Hospitals</h2>
+                <p>In case of emergency, the following hospitals in Delhi are well-equipped to assist:</p>
+                <ul>
+                    <li><strong>AIIMS (All India Institute of Medical Sciences)</strong> - Ansari Nagar, New Delhi</li>
+                    <li><strong>Fortis Escorts Heart Institute</strong> - Okhla Road, New Delhi</li>
+                    <li><strong>Safdarjung Hospital</strong> - Safdarjung Enclave, New Delhi</li>
+                    <li><strong>Max Super Speciality Hospital</strong> - Saket, New Delhi</li>
+                    <li><strong>Sir Ganga Ram Hospital</strong> - Rajinder Nagar, New Delhi</li>
+                </ul>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="more-info">
+                <h2>Additional Information</h2>
+                <p>Delhi is a bustling metropolis with rich history and vibrant culture. To make your stay enjoyable,
+                    consider the following tips:</p>
+                <ul>
+                    <li><strong>Best Time to Visit:</strong> October to March (pleasant weather)</li>
+                    <li><strong>Public Transport:</strong> The Delhi Metro is the fastest way to travel across the city.
+                    </li>
+                    <li><strong>Language:</strong> Hindi is widely spoken, but English is also understood at major
+                        tourist destinations.</li>
+                    <li><strong>Safety:</strong> Always keep an eye on your belongings and use reputed taxis or Uber/Ola
+                        services for travel.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="emergency-contact">
+            <p><i class="fas fa-phone"></i> Tourist Helpline: 011-23320342, 23320005, 23320008</p>
+        </div>
+    </div>
+
+    
+    </div>
+
+    <div class="emergency-contact">
+        <h3>Emergency Contact</h3>
+        <p>If you need help, contact the Delhi Metro helpline at: <strong>1800-11-1363</strong></p>
+    </div>
+    </div>
+
+    <script>
+        let zoomLevel = 100; // Initial zoom level (100%)
+
+        function zoomIn() {
+            zoomLevel += 10; // Increase zoom level by 10%
+            document.getElementById('metro-map').style.transform = `scale(${zoomLevel / 100})`;
+        }
+
+        function zoomOut() {
+            zoomLevel -= 10; // Decrease zoom level by 10%
+            if (zoomLevel >= 50) { // Prevent zooming out too far
+                document.getElementById('metro-map').style.transform = `scale(${zoomLevel / 100})`;
+            }
+        }
+    </script>
+</body>
+
+</html>
